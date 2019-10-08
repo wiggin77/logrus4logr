@@ -18,6 +18,7 @@ type TAdapter struct {
 }
 
 // NewAdapterTarget creates a target wrapper for a Logrus hook.
+// If filter and/or formatter are nil then defaults will be used (Panic level; Plain formatter).
 func NewAdapterTarget(filter logr.Filter, formatter logr.Formatter, hook logrus.Hook, maxQueue int) *TAdapter {
 	a := &TAdapter{hook: hook}
 	a.Basic.Start(a, a, filter, formatter, maxQueue)
