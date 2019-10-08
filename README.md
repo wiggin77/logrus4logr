@@ -2,7 +2,7 @@
 
 [![GoDoc](https://godoc.org/github.com/wiggin77/logrus4logr?status.svg)](https://godoc.org/github.com/wiggin77/logrus4logr)
 
-Provides adapters for using Logrus hooks and formatters with [Logr](https://github.com/wiggin77/logr).
+Provides adapters for using [Logrus](https://github.com/sirupsen/logrus) hooks and formatters with [Logr](https://github.com/wiggin77/logr).
 
 While Logrus hooks and formatters can easily be modified to work directly with Logr, these adapters are provided for convenience.
 
