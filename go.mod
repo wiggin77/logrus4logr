@@ -1,4 +1,4 @@
-module logrus4logr
+module github.com/wiggin77/logrus4logr
 
 go 1.13
 
