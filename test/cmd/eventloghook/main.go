@@ -1,11 +1,12 @@
+// +build windows
+
 package main
 
 import (
-	"os"
+	"github.com/Freman/eventloghook"
+	"golang.org/x/sys/windows/svc/eventlog"
 
-	"github.com/sirupsen/logrus"
 	"github.com/wiggin77/logr"
-	"github.com/wiggin77/logr/target"
 	"github.com/wiggin77/logr/test"
 
 	"github.com/wiggin77/logrus4logr"
@@ -13,9 +14,9 @@ import (
 
 const (
 	// GOROUTINES is the number of goroutines to spawn.
-	GOROUTINES = 10
+	GOROUTINES = 5
 	// LOOPS is the number of loops per goroutine.
-	LOOPS = 1000
+	LOOPS = 5
 )
 
 var lgr = &logr.Logr{
@@ -28,16 +29,17 @@ func handleLoggerError(err error) {
 }
 
 func main() {
-	// create a Logrus TextFormatter with whatever settings you prefer.
-	logrusFormatter := &logrus.TextFormatter{
-		// settings...
+	elog,err := eventlog.Open("Logr Test")
+	if err != nil {
+		panic(err)
 	}
+	eventLogHook := eventloghook.NewHook(elog)
 
-	// create writer target to stdout using adapter wrapping the Logrus TextFormatter.
+	// create writer target to stdout using adapter wrapping the NestedFormatter.
 	var t logr.Target
 	filter := &logr.StdFilter{Lvl: logr.Info, Stacktrace: logr.Error}
-	formatter := &logrus4logr.FAdapter{Fmtr: logrusFormatter}
-	t = target.NewWriterTarget(filter, formatter, os.Stdout, 1000)
+
+	t = logrus4logr.NewAdapterTarget(filter, nil, eventLogHook, 1000)
 	lgr.AddTarget(t)
 
 	test.DoSomeLogging(lgr, GOROUTINES, LOOPS)

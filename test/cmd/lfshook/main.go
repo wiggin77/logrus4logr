@@ -1,13 +1,10 @@
 package main
 
 import (
-	"os"
-
+	"github.com/rifflock/lfshook"
 	"github.com/sirupsen/logrus"
 	"github.com/wiggin77/logr"
-	"github.com/wiggin77/logr/target"
 	"github.com/wiggin77/logr/test"
-
 	"github.com/wiggin77/logrus4logr"
 )
 
@@ -28,17 +25,19 @@ func handleLoggerError(err error) {
 }
 
 func main() {
-	// create a Logrus TextFormatter with whatever settings you prefer.
-	logrusFormatter := &logrus.TextFormatter{
-		// settings...
+	// create a Local Filesystem Hook
+	pathMap := lfshook.PathMap{
+		logrus.InfoLevel:  "./info.log",
+		logrus.WarnLevel:  "./warn.log",
+		logrus.ErrorLevel: "./error.log",
 	}
 
-	// create writer target to stdout using adapter wrapping the Logrus TextFormatter.
-	var t logr.Target
+	lfsHook := lfshook.NewHook(pathMap, &logrus.JSONFormatter{})
 	filter := &logr.StdFilter{Lvl: logr.Info, Stacktrace: logr.Error}
-	formatter := &logrus4logr.FAdapter{Fmtr: logrusFormatter}
-	t = target.NewWriterTarget(filter, formatter, os.Stdout, 1000)
-	lgr.AddTarget(t)
+
+	// create adapter wrapping lfshook.
+	target := logrus4logr.NewAdapterTarget(filter, nil, lfsHook, 1000)
+	lgr.AddTarget(target)
 
 	test.DoSomeLogging(lgr, GOROUTINES, LOOPS)
 }

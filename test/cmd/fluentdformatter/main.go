@@ -3,12 +3,13 @@ package main
 import (
 	"os"
 
-	"github.com/sirupsen/logrus"
 	"github.com/wiggin77/logr"
 	"github.com/wiggin77/logr/target"
 	"github.com/wiggin77/logr/test"
 
 	"github.com/wiggin77/logrus4logr"
+
+	joonix "github.com/joonix/log"
 )
 
 const (
@@ -28,15 +29,13 @@ func handleLoggerError(err error) {
 }
 
 func main() {
-	// create a Logrus TextFormatter with whatever settings you prefer.
-	logrusFormatter := &logrus.TextFormatter{
-		// settings...
-	}
+	// create a FluentdFormatter.
+	fluentdFormatter := joonix.NewFormatter()
 
-	// create writer target to stdout using adapter wrapping the Logrus TextFormatter.
+	// create writer target to stdout using adapter wrapping the NestedFormatter.
 	var t logr.Target
 	filter := &logr.StdFilter{Lvl: logr.Info, Stacktrace: logr.Error}
-	formatter := &logrus4logr.FAdapter{Fmtr: logrusFormatter}
+	formatter := &logrus4logr.FAdapter{Fmtr: fluentdFormatter}
 	t = target.NewWriterTarget(filter, formatter, os.Stdout, 1000)
 	lgr.AddTarget(t)
 
