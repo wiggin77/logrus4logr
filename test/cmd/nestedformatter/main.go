@@ -42,5 +42,5 @@ func main() {
 	t = target.NewWriterTarget(filter, formatter, os.Stdout, 1000)
 	lgr.AddTarget(t)
 
-	test.DoSomeLogging(lgr, GOROUTINES, LOOPS)
+	test.DoSomeLogging(lgr, GOROUTINES, LOOPS, "good", "XXX")
 }

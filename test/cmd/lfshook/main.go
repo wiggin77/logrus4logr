@@ -39,5 +39,5 @@ func main() {
 	target := logrus4logr.NewAdapterTarget(filter, nil, lfsHook, 1000)
 	lgr.AddTarget(target)
 
-	test.DoSomeLogging(lgr, GOROUTINES, LOOPS)
+	test.DoSomeLogging(lgr, GOROUTINES, LOOPS, "good", "XXX")
 }
