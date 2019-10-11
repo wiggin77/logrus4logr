@@ -3,6 +3,8 @@
 package main
 
 import (
+	"time"
+	
 	"github.com/Freman/eventloghook"
 	"golang.org/x/sys/windows/svc/eventlog"
 
@@ -42,5 +44,14 @@ func main() {
 	t = logrus4logr.NewAdapterTarget(filter, nil, eventLogHook, 1000)
 	lgr.AddTarget(t)
 
-	test.DoSomeLogging(lgr, GOROUTINES, LOOPS, "good", "XXX")
+	cfg := test.DoSomeLoggingCfg{
+		Lgr:        lgr,
+		Goroutines: GOROUTINES,
+		Loops:      LOOPS,
+		GoodToken:  "woot!",
+		BadToken:   "!!!XXX!!!",
+		Lvl:        logr.Error,
+		Delay:      time.Millisecond * 1,
+	}
+	test.DoSomeLogging(cfg)
 }

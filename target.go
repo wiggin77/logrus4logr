@@ -2,7 +2,6 @@ package logrus4logr
 
 import (
 	"github.com/wiggin77/logr"
-	"github.com/wiggin77/logr/target"
 
 	"github.com/sirupsen/logrus"
 )
@@ -10,7 +9,7 @@ import (
 // TAdapter wraps a Logrus hook allowing the hook be used as a Logr target.
 // Create instances with `NewAdapterTarget`.
 type TAdapter struct {
-	target.Basic
+	logr.Basic
 	hook logrus.Hook
 
 	// Logger is an optional logrus.Logger instance to use instead of the default.

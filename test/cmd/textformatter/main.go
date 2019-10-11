@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"time"
 
 	"github.com/sirupsen/logrus"
 	"github.com/wiggin77/logr"
@@ -40,5 +41,14 @@ func main() {
 	t = target.NewWriterTarget(filter, formatter, os.Stdout, 1000)
 	lgr.AddTarget(t)
 
-	test.DoSomeLogging(lgr, GOROUTINES, LOOPS, "good", "XXX")
+	cfg := test.DoSomeLoggingCfg{
+		Lgr:        lgr,
+		Goroutines: GOROUTINES,
+		Loops:      LOOPS,
+		GoodToken:  "woot!",
+		BadToken:   "!!!XXX!!!",
+		Lvl:        logr.Error,
+		Delay:      time.Millisecond * 1,
+	}
+	test.DoSomeLogging(cfg)
 }

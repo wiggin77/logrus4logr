@@ -1,6 +1,8 @@
 package main
 
 import (
+	"time"
+
 	"github.com/rifflock/lfshook"
 	"github.com/sirupsen/logrus"
 	"github.com/wiggin77/logr"
@@ -39,5 +41,14 @@ func main() {
 	target := logrus4logr.NewAdapterTarget(filter, nil, lfsHook, 1000)
 	lgr.AddTarget(target)
 
-	test.DoSomeLogging(lgr, GOROUTINES, LOOPS, "good", "XXX")
+	cfg := test.DoSomeLoggingCfg{
+		Lgr:        lgr,
+		Goroutines: 10,
+		Loops:      50,
+		GoodToken:  "woot!",
+		BadToken:   "!!!XXX!!!",
+		Lvl:        logr.Error,
+		Delay:      time.Millisecond * 1,
+	}
+	test.DoSomeLogging(cfg)
 }

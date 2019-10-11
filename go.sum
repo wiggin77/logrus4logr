@@ -20,6 +20,7 @@ github.com/konsorten/go-windows-terminal-sequences v1.0.1 h1:mweAR1A6xJ3oS2pRaGi
 github.com/konsorten/go-windows-terminal-sequences v1.0.1/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
 github.com/konsorten/go-windows-terminal-sequences v1.0.2 h1:DB17ag19krx9CFsz4o3enTrPXyIXCl+2iCXH/aMAp9s=
 github.com/konsorten/go-windows-terminal-sequences v1.0.2/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
+github.com/nsf/jsondiff v0.0.0-20190712045011-8443391ee9b6/go.mod h1:uFMI8w+ref4v2r9jz+c9i1IfIttS/OkmLfrk1jne5hs=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5 h1:mZHayPoR0lNmnHyvtYjDeq0zlVHn9K/ZXoy17ylucdo=
@@ -35,6 +36,8 @@ github.com/wiggin77/logr v0.0.0-20191008153504-baac1b801e73 h1:lRao0Wc0zDcje991m
 github.com/wiggin77/logr v0.0.0-20191008153504-baac1b801e73/go.mod h1:VZeJzSbyHqC3zInXnFBJZURn9rGbqlTzlO2m5wdijZ8=
 github.com/wiggin77/logr v0.0.0-20191009035425-189ce7304c34 h1:XhYLDM920VmlED8oElS+0/odwPeH3qkkmlvS0VVwCPE=
 github.com/wiggin77/logr v0.0.0-20191009035425-189ce7304c34/go.mod h1:VZeJzSbyHqC3zInXnFBJZURn9rGbqlTzlO2m5wdijZ8=
+github.com/wiggin77/logr v0.0.0-20191011233000-e3bc20703517 h1:vdjEWflo0H1hEt2Iw9A3aqtCWx8dnUmIYstZtLsF2Hg=
+github.com/wiggin77/logr v0.0.0-20191011233000-e3bc20703517/go.mod h1:9sOJ1T4F2YdtgMrMaq9I1PiTV8R6wKModG5qZH+ba/s=
 github.com/wiggin77/merror v1.0.2 h1:V0nH9eFp64ASyaXC+pB5WpvBoCg7NUwvaCSKdzlcHqw=
 github.com/wiggin77/merror v1.0.2/go.mod h1:uQTcIU0Z6jRK4OwqganPYerzQxSFJ4GSHM3aurxxQpg=
 golang.org/x/exp v0.0.0-20190121172915-509febef88a4/go.mod h1:CJ0aWSM057203Lf6IL+f9T1iT9GByDxfZKAQTCR3kQA=
