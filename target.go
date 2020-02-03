@@ -1,6 +1,8 @@
 package logrus4logr
 
 import (
+	"fmt"
+
 	"github.com/wiggin77/logr"
 
 	"github.com/sirupsen/logrus"
@@ -34,4 +36,9 @@ func (a *TAdapter) Write(rec *logr.LogRec) error {
 
 	entry := convertLogRec(rec, rus)
 	return a.hook.Fire(entry)
+}
+
+// String returns the type name of the Logrus hook.
+func (a *TAdapter) String() string {
+	return fmt.Sprintf("%T", a.hook)
 }

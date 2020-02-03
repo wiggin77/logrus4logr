@@ -14,7 +14,7 @@ const (
 	// GOROUTINES is the number of goroutines to spawn.
 	GOROUTINES = 10
 	// LOOPS is the number of loops per goroutine.
-	LOOPS = 1000
+	LOOPS = 50
 )
 
 var lgr = &logr.Logr{
@@ -39,12 +39,14 @@ func main() {
 
 	// create adapter wrapping lfshook.
 	target := logrus4logr.NewAdapterTarget(filter, nil, lfsHook, 1000)
-	lgr.AddTarget(target)
+	_ = lgr.AddTarget(target)
+
+	lgr.NewLogger().Info("Using ", target.String())
 
 	cfg := test.DoSomeLoggingCfg{
 		Lgr:        lgr,
-		Goroutines: 10,
-		Loops:      50,
+		Goroutines: GOROUTINES,
+		Loops:      LOOPS,
 		GoodToken:  "woot!",
 		BadToken:   "!!!XXX!!!",
 		Lvl:        logr.Error,

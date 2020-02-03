@@ -41,7 +41,7 @@ func main() {
 	filter := &logr.StdFilter{Lvl: logr.Info, Stacktrace: logr.Error}
 	formatter := &logrus4logr.FAdapter{Fmtr: nestedFormatter}
 	t = target.NewWriterTarget(filter, formatter, os.Stdout, 1000)
-	lgr.AddTarget(t)
+	_ = lgr.AddTarget(t)
 
 	cfg := test.DoSomeLoggingCfg{
 		Lgr:        lgr,

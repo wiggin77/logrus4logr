@@ -23,7 +23,7 @@ func main() {
 
 	// create adapter wrapping lfshook.
 	target := logrus4logr.NewAdapterTarget(filter, nil, lfsHook, 1000)
-	lgr.AddTarget(target)
+	_ = lgr.AddTarget(target)
 
 	// log stuff!
 	logger := lgr.NewLogger().WithField("status", "woot!")
@@ -31,5 +31,5 @@ func main() {
 	logger.Info("I'm hooked on Logr")
 	logger.WithField("code", 501).Error("Request failed")
 
-	lgr.Shutdown()
+	_ = lgr.Shutdown()
 }
