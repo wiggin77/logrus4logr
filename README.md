@@ -1,6 +1,7 @@
 # logrus4logr
 
 [![GoDoc](https://godoc.org/github.com/wiggin77/logrus4logr?status.svg)](https://godoc.org/github.com/wiggin77/logrus4logr)
+![Build Status](https://github.com/wiggin77/logrus4logr/actions/workflows/go.yml/badge.svg)
 
 Provides adapters for using [Logrus](https://github.com/sirupsen/logrus) hooks and formatters with [Logr](https://github.com/wiggin77/logr).
 
